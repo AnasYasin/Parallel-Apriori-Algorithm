@@ -5,15 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner; 
-/**
- *
- * @author Adil Ayub
- */
+
 public class ProcessData {
 
-    /**
-     * @param args the command line arguments
-     */
     public int counting(File file) throws FileNotFoundException 
     {
         Scanner scan= new Scanner(file);
@@ -164,6 +158,7 @@ public class ProcessData {
     }
     public void outputnewdata(int arr[][]) throws IOException
     {
+        
         BufferedWriter out = new BufferedWriter(new FileWriter("newdata.txt"));String zero="0";
         for(int i=1;i<arr.length;i++)
         {
@@ -183,7 +178,7 @@ public class ProcessData {
         }
         out.close();
     }
-    public int [][] forsortingarray(int col) throws FileNotFoundException
+    public int [][] forsortingarray(int col) throws FileNotFoundException //return without zero
     {
         File file = new File("newdata.txt");int arr[][],start=0,index=0,indexarr=0,intx;String temp,ints;char sub;
         int num_line=counting(file);
@@ -228,14 +223,17 @@ public class ProcessData {
         }
         return newdata;
     }
-    public int [][] sortingalgo(int newdata[][])
+    public int [][] sortingalgo(int newdata[][])//sorting
     {
         for(int i=0;i<((newdata.length)-1);i++)
         {
-           if(newdata[i][0] > newdata[i+1][0])
-           {
-               newdata=exchangerows(newdata,i);
-           }
+            for(int j=0;j<(((newdata.length)-i)-1);j++)
+            {
+                if(newdata[j][0] > newdata[j+1][0])
+                {
+                    newdata=exchangerows(newdata,j);
+                }
+            }
         }    
         return newdata;
     }
@@ -254,11 +252,14 @@ public class ProcessData {
         System.out.printf("\n\n\n\n");
     }
     public int differentRows(int data[][]){
-        int count=1, temp;
+        int count=1, temp=0;
         temp=data[0][0];
+        System.out.println("");
         
-        for(int i=0; i<data.length; i++){
-            if(data[i][0]!=temp){
+        
+        
+        for(int i=1; i<data.length-1; i++){
+            if(data[i][0]!=temp && data[i][0]!=0){
                 count+=1;
                 temp=data[i][0];
             }
