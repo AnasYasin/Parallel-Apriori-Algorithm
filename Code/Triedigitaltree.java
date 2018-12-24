@@ -1,14 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package CA_Project;
-
-/**
- *
- * @author imana
- */
 public class Triedigitaltree {
 //Tree stuf 
     public static int records=0;
@@ -47,10 +36,10 @@ public class Triedigitaltree {
                 return;
             }
         }
-            
+        /*    
         for(int i=0; i<data.length; i++)
             System.out.println(data[i]+ " ");    //Display input
-        
+        */
         int num, index;
         boolean already=false;
         Node CurrentNode=head;
